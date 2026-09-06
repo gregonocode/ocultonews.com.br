@@ -1,0 +1,38 @@
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgb(255 255 255 / 12%) 42%,
+    rgb(255 255 255 / 45%) 50%,
+    rgb(255 255 255 / 12%) 58%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: shine-sweep 3.5s ease-in-out infinite;
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  40%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shine::before {
+    animation: none;
+  }
+}
